@@ -1,0 +1,56 @@
+Se tiene lo siguiente:
+
+int x, array[MAX];
+x = array[4];
+
+Antes de hablar de que es lo que pasa para el compilador es enecesario aclara lo que realizan el operador & y el *.
+
+El operador & te da la direccion de la variable donde uno lo aplica. Por ej:
+int y = 5;
+int * yPtr;
+yPtr = &y; Esto lo que hace es asignarle el valor de la direccion de memoria de la variable del tipo entero y, a la variable puntero del tipo etero yPtr.
+
+Ahora la variable puntero yPtr apunta hacia y.
+
+El operador * te da el valor del objeto al que su puntero apunta. 
+
+si pusieramos:
+
+*yPtr = 10; Lo que hacemos es decirle que ahora al lugar donde apunta yPtr(Previamente habiamos a sigado que yPtr guarde en su valor la direccion de la variable y) vamos a modificar el valor previo que era 5 por el valor 10.
+
+Para el caso inicial del arreglo:
+
+int x, array[MAX];
+x = array[4];
+
+el compilador ve que tiene que asignarle a la variable x el valor de la 4ta posicion del arreglo array.
+Para hacer esto va a tener una variable puntero del tipo entero (llamemosla xPtr. int * xPtr se declararia), donde en la variable puntero se la inicializa guardandole en su interior el valor de la direccion en memoria de la variable x (xPtr = &x). Y por ultimo se le asigna el valor que extrajo de la 4ta posicon del arreglo array en la variable x (*xPtr = array[4]);
+ 
+	Por lo tanto es equivalente a hacer lo siguiete:
+	int x, array[MAX];
+	int * xPtr;
+
+	xPtr = &x; 
+	/*Le asigno como valor a xPtr la posicion de x*/
+	
+	*xPtr = array[4];
+	/*A donde apunta xPtr, le estoy diciendo que le asigne el valor de la 4ta posicion del arreglo array*/
+
+El compilador para aceder al 4to elemento del arreglo del tipo entero array, va a saber que elemento 0 ocupa 4 bits por ser del tipo entero, el segundo otros 4bits y asi todos.
+Como el arreglo esta guardado todo en cadena en la memoria, para ir a la 4ta posicon, va a tener que moverce a la direccion en memoria del elemento que esta en la posicon 0 del arreglo array y avanzar 16 direcciones en memoria para llegar al comienzo de la 4ta posicion del arreglo array.
+
+En la operacion *xPtr = array[4], al asignarle como valor a donde apunta el puntero xPtr, el valor de array[4], el compilador, para ir a buscarlo, tiene que saber la direccion de array, es decir que hay un puntero que apunta a la direccion del arreglo array.
+Hay un:
+	int * arrPnt;
+	arrPnt = array; ó arrPnt = array[0];
+	/*Le asignamos a la variable del tipo puntero la direccion en memoria del comienzo del primer elemento del arreglo array.*/
+
+	Ahora para ir a la 4ta posicion del arreglo array hay que hacer:
+
+	arrPnt += 16; 
+	/*Nos movemos 16 posiciones en memoria del previo valor que teniamos antes.*/
+
+	Para asignrale el valor a x de la 4ta posicion del arreglo hay que hacer:
+
+	x = *arrPnt;  ó *xPtr = *arrPnt; 
+	le asignamos el valor de donde apunta arrPnt a donde apunta xPtr.

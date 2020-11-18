@@ -1,0 +1,8 @@
+El commpilador usa el tipo de la variable puntero para saber el tamaño de memoria de lo que esta apuntado el puntero.
+
+Por ejemplo:
+
+int n;
+int * nPtr;
+
+nptr = &n;

@@ -1,0 +1,12 @@
+Al declara un arreglo int a[]
+
+lo que hacemos es declarar un puntero a que apunte hacia el comienzo de la direccion de memoria de la posicion 0 del arreglo.Entnces a es equivalente a hacer &a[0]. Entonces el elemento numero i puede ser accedido haciendo *(a + i) o el valor en (a + i).
+
+
+
+
+
+La diferencia entre un puntero a y el nombre del arreglo arr, es que nunca vamos a poder cambiar la direccion del nombre del arreglo arr. Siempre va a apuntar hacia el primer elemento del arreglo arr.
+
+
+La variable puntero a, es flexible, puede ser modificada durante la ejecucion del programa para que pase de apuntar hacia el comienzo del arreglo arr a otra posicion del arreglo que tiene distinta direccion de memoria, o hacia otra variable. *(a + 1) apunta a la posicion 1 del arreglo (arr[1]).

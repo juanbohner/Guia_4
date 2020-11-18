@@ -1,0 +1,57 @@
+Relacion arreglos y punteros.
+
+El nombre de un arreglo puede ser interpretado como un "constant pointer".
+
+
+Consigna:
+int *ip, **ipp, (*ip4)[4], i, j;
+int ventas[3][4];
+explicar las siguientes expresiones:
+a) ip4 = ventas;
+b) ip = (int *)ventas;
+c) ipp = (int **) ventas;
+d) *(*(ip4 + i) + j)
+e) *(*(ventas + i ) + j) 
+
+Explicaciones:
+a) int (*ip4)[4];
+ip4 Es un puntero a un arreglo de 4 elementos del tipo entero.
+Con ip4 = ventas;
+Estamos haciendo que el puntero ip4 apunte hacia el comienzo del arreglo ventas.
+
+b) 
+int *ip;
+ip = (int *)ventas;
+
+ventas es una matrix [3][4]. ip es un puntero que apunta a enteros. Si quisieramos asignar normalmente como hacemos con arreglos ip = arr; diciedo que el puntero ip apunte a la direccion de la posicion 0 del arreglo, eso es valido. Pero como ventas es una matrix, para hacer que ip que es un puntero a enteros funcione, hay que castear que ventas sea (int *) lo que hacer que lo tratemos como un arreglo de enteros.
+
+c)
+int **ipp;
+ipp = (int **)ventas;
+
+Ventas es una matriz [3][4]. no podenos asignarle a ipp la direccion de esa matriz. ya que es del tipo int **. Entoces le casteamos a ventas el tipo int ** para poder asignarle la direccion de ventas a ipp. ipp apunta a la direccion del primer elemento de la matriz ventas.
+
+d)
+
+int (*ip4)[4];
+ip4 = ventas;
+printf("%d\n", *(*(ip4 + i) + j));
+
+Lo que estaria haciendo es imprimir el valor del elemento j de la fila i. 
+
+
+En la asignacion *(*(ip4 + i) + j), Si la vemos de adentro hacia afuera:
+	primero hay que ver que representa el *(ip4 + i).
+	
+	Esto anterior esta diciendo que apunta hacia la primera posicon del arreglo i que esta adentro del arreglo de arreglos ventas. (Es la posiicon i, porque *ip4 solamente apuntaria hacia el areglo 0 del arreglo de arreglos ventas).
+
+
+	Ahora para *( ... + j), lo que hacemos es una vez parados dentro de ese arreglo i ADENTRO del arreglo de arreglos ventas.
+	Movernos al elemento j del arreglo donde estamos parados y apuntar a el(si no estuviese la j, apuntariamos al primer elemento, que está en la posicion 0 del arreglo i donde estamos parados adentro del arreglo de arreglos ventas).
+
+e)
+	printf("%d\n", *(*(ventas + i ) + j));
+
+Lo que hace esta linea de codigo es equivalente a el caso d)
+
+En esta situacion podemos encararla de la misma manera que la anterior. Lo de adentro del parentesisi *(ventas + i), se refiere al arreglo i adentro del arreglo de arreglos ventas. Usamos ventas como indicador donde estamos parados inicialmente porque los arreglos guardan en su nombre su direccion de memoria de su primer elelemnto . Entonces en ventas(el nombre) va a a ser para el compilador la posicion [0][0] del arreglo ventas. Como sabe que ventas es un arreglo de arreglos, va a necesitar 2 indicadores de posicion, uno para saber en que arreglo de los arreglos de adentro de ventas estamos Y otro para saber el elemento del subarreglo donde estamos parados. Obtenemos el valor de esos indicadores con el *.

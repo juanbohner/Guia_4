@@ -1,0 +1,4 @@
+La definicio de la variable puntero es:
+
+Los punteros son variables que contienen direcciones de memorias como su valor. A su vez, las variables punteros ocupan una cierta cantidad de memoria, dependiendo del tipo con el que se la inicializa. Las variables punteros como ocupan memoria, tambien tienen una posicion especifica en memoria. 
+Un puntero siempre apunta a la primera unidad de memoria que ocupe la variable que esta guardada como su valor.

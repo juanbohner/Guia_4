@@ -1,0 +1,23 @@
+El '\0' es el caracter nulo, es un caracter donde todos sus bits son 0.
+
+Se puede hacer lo siguiente:
+
+if (!*string_pointer)
+checkear si el string pointer está apuntando al caracter null (\0).
+similar a if(!x) comparaba a x con algo igual a 0. 
+(if(x == 0)) (FALSE)
+
+
+
+if (*string_pointer) 
+checkear si el string pointer está apuntando a un caracter que no sea el null.
+similar a if(x) compara con algo que sea distinto de 0.
+(if(x != 0)) (TRUE)
+
+
+NULL se refiere a u puntero que tiene guardado un valor que apunta a algo invalido. Se puede usar para comparar punteros que si apuntan a una direccion valida con el NULL pointer. Si se cumple la comparacion entonces el puntero que comparamos es invalido.
+
+if (pointer == NULL) compara a pointer con el NULL (que es una macro de un puntero invalido)
+
+if (pinter == 0) tambien hace la misma comparacion.
+if (!pointer) es equivalente a lo anterior.

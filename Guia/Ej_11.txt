@@ -1,0 +1,18 @@
+Explicar el significado de las siguientes declaraciones:
+a) int (*uno)[12];
+b) int *dos[12];
+c) void *fu();
+d) void (*fa)(); 
+
+
+a)
+uno es un puntero a un arreglo de 12 elementos del tipo int.
+
+b)
+dos es un arreglo de 12 punteros a tipo int.
+
+c)
+fu es una funcion que en el return te da un puntero a void.
+
+d)
+fa es un puntero que apunta a funciones que devuelven void.

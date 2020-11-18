@@ -1,0 +1,41 @@
+8)
+Diferencia entre:
+a)
+
+char cadena1 [] = "Hola";
+char * cadena2 = "Hola";
+
+char cadena1[] = "Hola"; declara un arreglo de 5 caracteres, 'H', 'o', 'l', 'a' y '\0'.
+
+char * cadena2 = "Hola"; declara el puntero cadena2 como un puntero que apunta a char. cadena2 no reserva memoria para la cadena. La reserva de moria ocurre al asignar el puntero a la constante de cadena en el mismo momento donde se declara. 
+
+Si tuvieramos:
+
+char palabra[15];
+char * frase;
+frase = palabra;
+scanf(“%s”, frase);
+printf(“%s”, frase);
+
+Hariamos un arreglo de caracteres palabra con 15 caracteres de espacio de memoria. El puntero frase que es un puntero a caracteres. Con frase = palabra, apunamos el puntero frase hacia la direccion de palabra. Frase apunta a la reserva de memoria. Despues con el scanf le asignamos lo que tiene que guardar en la memoria. 
+
+
+Lo que dice el apunte teorico:
+
+	char palabra[] = “otro color”;
+	char * frase = “otro color”;
+Palabra es un arreglo, que en cada posición contiene un carácter y al final el ‘\0’. Se pueden modificar caracteres individuales dentro del arreglo, pero palabra siempre se referirá a la misma dirección de memoria. 
+
+Por otro lado, frase es un puntero, inicializado para apuntar a una cadena constante; el puntero puede modificarse posteriormente para que apunte a algún otro lado, pero el resultado es indefinido si se intenta modificar el contenido de la cadena.
+
+Aclaración: como la asignación directa de una cadena de caracteres en el momento de la declaración reserva memoria y agrega automáticamente el carácter nulo, podemos asignar dicha cadena a un vector sin especificar explícitamente su tamaño. 
+
+Para:
+char meses1 [12][] = {"Enero", "Febrero", ... , "Diciembre"};
+char * meses2 [12] = {"Enero", "Febrero", ... , "Diciembre"};
+
+Es lo mismo de antes, meses1 es un arreglo de 12 cadenas con memoria fija, donde puedo cambiar sus elementos. meses1 siempre va a referirse a esa direccion de memoria que tuvo cuando se lo declaró.
+meses2 es un puntero inicializado para apuntar a una cadena de las 12 cadenas adentro de ella. que se puede modificar posteriormente para que apunte a algun otro lado, pero el resultado es indefinido si se intenta modificar el contenido de la cadena.  
+
+b)
+

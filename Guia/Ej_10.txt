@@ -1,0 +1,46 @@
+int *** miVariable;
+
+miVariable va a ser un puntero a puntero a puntero entero.
+
+Puedo tener una variable:
+	int X; Donde X vive en la direccion de memoria A000.
+
+Despues un puntero a entero:
+
+	int *ptr1; 
+	ptr1 = &X; 
+
+	ptr1 es un puntero que apunta a int y que vive en ça direccion de memoria B123; Pero ptr1 tiene guardado la direcciond e memoria de X(apunta a A000).
+
+Ahora puedo tener un puntero a puntero entero:
+
+	int **ptr2ptr;
+	ptr2ptr = &ptr1;
+
+	ptr2ptr es un punetero que apunta a puntero entero.
+	ptr2ptr tiene direccionde memoria C456. Apunta a la direccion de memoria de ptr1(B123).
+
+Por ultimo la variable del enunciado:
+
+	int *** miVariable;
+	miVariable = &ptr2ptr;
+
+	miVariable es un puntero a puntero a puntero a entero.
+	miVariable vive en la direccion de memoria D789. Y apunta a la direccion de memoria de ptr2ptr (C456).
+
+Si pongo:
+	***miVariable = 10;
+
+Se puede interpretar como:
+	**(Lo que apunta miVariable) = 10; 
+Osea:
+	**(C456) = 10; (En C456 vive ptr2ptr).
+
+Despues puedo interpretar eso como:
+	*(Donde apunta lo que esta en 	C456 (ptr2ptr)) = 10;
+osea:
+	*(B123) = 10; (*(ptr1) = 10;)
+
+Por ultimo:
+
+	*ptr1 = 10; Es asignarle 10 a la direccion que está apuntando ptr1. (Que es A000, donde vive X).
